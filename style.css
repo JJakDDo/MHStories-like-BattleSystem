@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+body{
+    background: #181818;
+}
+
+main{
+    background: #EDEDED;
+    margin: 0 auto;
+    width: 600px;
+    height: 100vh;
+}
+
+header{
+    padding-top: 20px;
+}
+
+header > h1{
+    text-align: center;
+    padding: 20px auto;
+}
+
+#battleField{
+    background: white;
+    margin: 20px 10px;
+    border: 3px solid black;
+    border-radius: 10px;
+    height: 300px;
+    position: relative;
+}
+
+
+.HPBar{
+    background: white;
+    width: 106px;
+    border: 3px solid black;
+    border-radius: 10px;
+    position: absolute;
+}
+
+.currentHP{
+    background: red;
+    width: 50px;
+    border-radius: 5px;
+}
+
+#playerHP{
+    top: 50px;
+    left: 20px;
+}
+
+#monsterHP{
+    top: 50px;
+    right: 20px;
+}
+
+#attackTypes{
+    display: flex;
+    margin: 50px 10px;
+    padding: 0 30px;
+    justify-content: space-between;
+}
+
+.attack{
+    width: 150px;
+    height: 150px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.attack:hover{
+    cursor: pointer;
+}
