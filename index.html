@@ -10,14 +10,20 @@
             </header>
             <div id="battleField">
                 <div class="HPBar" id="playerHP">
-                    <div class="currentHP" id="currentPlayerHP">
-                        <span>50</span>/<span>100</span>
+                    <div class="currentHP" id="currentPlayerHPBar">
+                        <span id="currentPlayerHPNum">50</span>/<span>100</span>
                     </div>
                 </div>
+                <div class="attackPosition" id="playerInitAttackPosition">
+
+                </div>
                 <div class="HPBar" id="monsterHP">
-                    <div class="currentHP" id="currentMonsterHP">
-                        <span>50</span>/<span>100</span>
+                    <div class="currentHP" id="currentMonsterHPBar">
+                        <span id="currentMonsterHPNum">50</span>/<span>100</span>
                     </div>
+                </div>
+                <div class="attackPosition" id="monsterInitAttackPosition">
+
                 </div>
             </div>
             <div id="attackTypes">
@@ -26,5 +32,6 @@
                 <div class="attack" id="technical"></div>
             </div>
         </main>
+        <script src="app.js" type="module"></script>
     </body>
 </html>

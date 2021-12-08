@@ -47,7 +47,6 @@ header > h1{
 
 .currentHP{
     background: red;
-    width: 50px;
     border-radius: 5px;
 }
 
@@ -69,6 +68,7 @@ header > h1{
 }
 
 .attack{
+    position: relative;
     width: 150px;
     height: 150px;
     background: white;
@@ -78,4 +78,76 @@ header > h1{
 
 .attack:hover{
     cursor: pointer;
+}
+
+#power::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    z-index: 1;
+    border: 2px solid crimson;
+    box-shadow: 1px 1px 5px crimson;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+#power:hover::before{
+    opacity: 1;
+}
+
+#speed::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    z-index: 1;
+    border: 2px solid skyblue;
+    box-shadow: 1px 1px 5px skyblue;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+#speed:hover::before{
+    opacity: 1;
+}
+
+#technical::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    z-index: 1;
+    border: 2px solid greenyellow;
+    box-shadow: 1px 1px 5px greenyellow;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+#technical:hover::before{
+    opacity: 1;
+}
+
+.attackPosition{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+}
+
+#playerInitAttackPosition{
+    top: 150px;
+    left: 150px;
+}
+#monsterInitAttackPosition{
+    top: 150px;
+    right: 200px;
 }
