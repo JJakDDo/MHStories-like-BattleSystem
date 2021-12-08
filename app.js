@@ -24,6 +24,8 @@ window.onload = () => {
     let isPARemoved = false;
     let isMARemoved = false;
 
+    let isBattlePhase = false;
+
     const updateHPBar = () => {
         currentPlayerHPBar_div.style.width = `${playerHP}px`;
         currentMonsterHPBar_div.style.width = `${monsterHP}px`;
@@ -64,6 +66,7 @@ window.onload = () => {
                     isPARemoved = true;
                     monsterHP -= 10;
                     updateHP();
+                    isBattlePhase = false;
                 }
             }
         } else if(result === "lose"){
@@ -83,6 +86,7 @@ window.onload = () => {
                     isMARemoved = true;
                     playerHP -= 10;
                     updateHP();
+                    isBattlePhase = false;
                 }
             }
         } else if(result === "draw"){
@@ -98,6 +102,7 @@ window.onload = () => {
                 if(monsterAttInitPos_div.offsetLeft + monsterLeft <= playerAttInitPos_div.offsetLeft + playerLeft + 50){
                     monsterAttInitPos_div.removeChild(monsterAttack);
                     isMARemoved = true;
+                    isBattlePhase = false;
                 } else {
                     requestAnimationFrame(attack.bind(null, result, playerLeft, monsterLeft));
                 }
@@ -106,16 +111,38 @@ window.onload = () => {
     }
 
     const createAttack = (att1, att2) => {
-        playerAttack = document.createElement("div");
+        playerAttack = document.createElement("img");
         playerAttack.style.width = "50px";
         playerAttack.style.height = "50px";
-        playerAttack.style.background = att1;
+        playerAttack.style.borderRadius = "50%";
+        switch(att1){
+            case "p":
+                playerAttack.setAttribute("src", "src/power.png");
+                break;
+            case "s":
+                playerAttack.setAttribute("src", "src/speed.png");
+                break;
+            case "t":
+                playerAttack.setAttribute("src", "src/technical.png");
+                break;
+        }
         playerAttInitPos_div.appendChild(playerAttack);
     
-        monsterAttack = document.createElement("div");
+        monsterAttack = document.createElement("img");
         monsterAttack.style.width = "50px";
         monsterAttack.style.height = "50px";
-        monsterAttack.style.background = att2;
+        monsterAttack.style.borderRadius = "50%";
+        switch(att2){
+            case "p":
+                monsterAttack.setAttribute("src", "src/power.png");
+                break;
+            case "s":
+                monsterAttack.setAttribute("src", "src/speed.png");
+                break;
+            case "t":
+                monsterAttack.setAttribute("src", "src/technical.png");
+                break;
+        }
         monsterAttInitPos_div.appendChild(monsterAttack);
 
         isPARemoved = false;
@@ -124,39 +151,14 @@ window.onload = () => {
 
     const startBattle = (result, att1, att2) => {
         console.log(result);
-        let aType1;
-        let aType2;
-
         let playerLeft = 0;
         let monsterLeft = 0;
-
-        switch(att1){
-            case "p":
-                aType1 = "crimson";
-                break;
-            case "s":
-                aType1 = "skyblue";
-                break;
-            case "t":
-                aType1 = "greenyellow";
-                break;
-        }
-        switch(att2){
-            case "p":
-                aType2 = "crimson";
-                break;
-            case "s":
-                aType2 = "skyblue";
-                break;
-            case "t":
-                aType2 = "greenyellow";
-                break;
-        }
-        createAttack(aType1, aType2);
+        createAttack(att1, att2);
         requestAnimationFrame(attack.bind(null, result, playerLeft, monsterLeft));
     }
 
     const battlePhase = () => {
+        isBattlePhase = true;
         monsterAttackType = getMonsterAttackType();
         switch(playerAttackType + monsterAttackType){
             case "pt":
@@ -180,16 +182,22 @@ window.onload = () => {
     const init = () => {
         updateHP();
         powerAttack_div.addEventListener("click", () => {
-            playerAttackType = "p";
-            battlePhase();
+            if(!isBattlePhase){
+                playerAttackType = "p";
+                battlePhase();
+            }
         });
         speedAttack_div.addEventListener("click", () => {
-            playerAttackType = "s";
-            battlePhase();
+            if(!isBattlePhase){
+                playerAttackType = "s";
+                battlePhase();
+            }
         });
         technicalAttack_div.addEventListener("click", () => {
-            playerAttackType = "t";
-            battlePhase();
+            if(!isBattlePhase){
+                playerAttackType = "t";
+                battlePhase();
+            }
         });
     }
 

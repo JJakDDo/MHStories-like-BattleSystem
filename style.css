@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'DotGothic16', sans-serif;
+    user-select: none;
 }
 
 body{
@@ -71,8 +72,7 @@ header > h1{
     position: relative;
     width: 150px;
     height: 150px;
-    background: white;
-    border: 2px solid black;
+    background: rgba(0, 0, 0, 0);
     border-radius: 50%;
 }
 
@@ -84,14 +84,14 @@ header > h1{
     content: "";
     width: 100%;
     height: 100%;
-    background: white;
+    background: rgba(0, 0, 0, 0);
     border-radius: 50%;
     position: absolute;
     top: -2px;
     left: -2px;
     z-index: 1;
     border: 2px solid crimson;
-    box-shadow: 1px 1px 5px crimson;
+    box-shadow: 0 0 50px crimson;
     opacity: 0;
     transition: opacity 1s ease;
 }
@@ -103,14 +103,14 @@ header > h1{
     content: "";
     width: 100%;
     height: 100%;
-    background: white;
+    background: rgba(0, 0, 0, 0);
     border-radius: 50%;
     position: absolute;
     top: -2px;
     left: -2px;
     z-index: 1;
     border: 2px solid skyblue;
-    box-shadow: 1px 1px 5px skyblue;
+    box-shadow: 0 0 50px skyblue;
     opacity: 0;
     transition: opacity 1s ease;
 }
@@ -122,14 +122,13 @@ header > h1{
     content: "";
     width: 100%;
     height: 100%;
-    background: white;
+    background: rgba(0, 0, 0, 0);
     border-radius: 50%;
     position: absolute;
     top: -2px;
     left: -2px;
-    z-index: 1;
     border: 2px solid greenyellow;
-    box-shadow: 1px 1px 5px greenyellow;
+    box-shadow: 0 0 50px greenyellow;
     opacity: 0;
     transition: opacity 1s ease;
 }
@@ -150,4 +149,11 @@ header > h1{
 #monsterInitAttackPosition{
     top: 150px;
     right: 200px;
+}
+
+.attackImg{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 0;
 }
