@@ -18,6 +18,10 @@ window.onload = () => {
     const playerAttInitPos_div = document.getElementById("playerInitAttackPosition");
     const monsterAttInitPos_div = document.getElementById("monsterInitAttackPosition");
 
+    const modal_div = document.getElementById("modal");
+    const resultText_h = document.getElementById("resultText");
+    const retry_div = document.getElementById("retry");
+
     let playerAttack;
     let monsterAttack;
 
@@ -25,6 +29,11 @@ window.onload = () => {
     let isMARemoved = false;
 
     let isBattlePhase = false;
+
+    let isGameOver = false;
+
+    const HIDE = "hide";
+    const DISABLE = "disable";
 
     const updateHPBar = () => {
         currentPlayerHPBar_div.style.width = `${playerHP}px`;
@@ -36,9 +45,28 @@ window.onload = () => {
         currentMonsterHPNum_span.innerText = monsterHP;
     }
 
+    const checkGameOver = () => {
+        if(playerHP <= 0){
+            isGameOver = true;
+            resultText_h.innerText = "You win!!!";
+        }
+        if(monsterHP <= 0){
+            isGameOver = true;
+            resultText_h.innerText = "You lose...";
+        }
+
+        if(isGameOver){
+            modal_div.classList.remove(HIDE);
+            powerAttack_div.classList.add(DISABLE);
+            speedAttack_div.classList.add(DISABLE);
+            technicalAttack_div.classList.add(DISABLE);
+        }
+    }
+
     const updateHP = () => {
         updateHPNum();
         updateHPBar();
+        checkGameOver();
     }
 
     const getMonsterAttackType = () => {
@@ -198,6 +226,17 @@ window.onload = () => {
                 playerAttackType = "t";
                 battlePhase();
             }
+        });
+        retry_div.addEventListener("click", () => {
+            modal_div.classList.add(HIDE);
+            powerAttack_div.classList.remove(DISABLE);
+            speedAttack_div.classList.remove(DISABLE);
+            technicalAttack_div.classList.remove(DISABLE);
+            playerHP = 100;
+            monsterHP = 100;
+            isGameOver = false;
+            updateHPNum();
+            updateHPBar();
         });
     }
 

@@ -17,6 +17,7 @@ main{
     margin: 0 auto;
     width: 600px;
     height: 100vh;
+    position: relative;
 }
 
 header{
@@ -80,62 +81,6 @@ header > h1{
     cursor: pointer;
 }
 
-#power::before{
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0);
-    border-radius: 50%;
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    z-index: 1;
-    border: 2px solid crimson;
-    box-shadow: 0 0 50px crimson;
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-#power:hover::before{
-    opacity: 1;
-}
-
-#speed::before{
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0);
-    border-radius: 50%;
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    z-index: 1;
-    border: 2px solid skyblue;
-    box-shadow: 0 0 50px skyblue;
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-#speed:hover::before{
-    opacity: 1;
-}
-
-#technical::before{
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0);
-    border-radius: 50%;
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    border: 2px solid greenyellow;
-    box-shadow: 0 0 50px greenyellow;
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-#technical:hover::before{
-    opacity: 1;
-}
-
 .attackPosition{
     position: absolute;
     width: 10px;
@@ -156,4 +101,66 @@ header > h1{
     height: 100%;
     border-radius: 50%;
     z-index: 0;
+    transition: transform 1s ease;
+}
+
+.attackImg:hover{
+    transform: scale(1.1, 1.1);
+}
+
+
+.modal{
+    margin: 0 auto;
+    width: 600px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal_overlay{
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#modal_content{
+    background: white;
+    width: 300px;
+    height: 200px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modal_content > h2{
+    margin: 20px;
+}
+#modal_content > img{
+    width: 50px;
+    height: 50px;
+}
+
+#modal_content > #retry{
+    margin: 20px;
+    background: black;
+    color: white;
+    width: 80px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.hide{
+    display: none;
+}
+.disable{
+    pointer-events: none;
 }
