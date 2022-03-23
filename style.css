@@ -173,4 +173,10 @@ header > h1 {
 
 #playerInfo {
   position: absolute;
+  width: 100%;
+}
+
+#balance {
+  position: absolute;
+  right: 0;
 }

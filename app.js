@@ -45,6 +45,11 @@ window.onload = () => {
   const HIDE = 'hide';
   const DISABLE = 'disable';
 
+  const balance_span = document.querySelector('#balance');
+
+  let symbol;
+  let balance;
+
   const updateHPBar = () => {
     currentPlayerHPBar_div.style.width = `${playerHP}px`;
     currentMonsterHPBar_div.style.width = `${monsterHP}px`;
@@ -265,6 +270,7 @@ window.onload = () => {
 
     const address = document.querySelector('#address');
     address.textContent = account;
+
     updateHP();
     powerAttack_div.addEventListener('click', () => {
       if (!isBattlePhase) {
@@ -297,13 +303,37 @@ window.onload = () => {
     });
   };
 
-  const login = () => {
+  const login = async () => {
+    const response = await fetch('./RPSToken.json');
+    const data = await response.json();
+
+    const abi = data.abi;
+    const contractAddress = '';
+
     if (typeof ethereum !== 'undefined') {
       loginBtn.addEventListener('click', async () => {
         web3 = new Web3(ethereum);
-        //const accounts = await ethereum.request({ method: 'eth_accounts' });
-        const accounts = await web3.eth.getAccounts();
-        console.log(accounts[0]);
+        const accounts = await ethereum.request({
+          method: 'eth_requestAccounts',
+        });
+        //const accounts = await web3.eth.getAccounts();
+        ethereum.on('accountsChanged', function (accounts) {
+          // Time to reload your interface with accounts[0]!
+          console.log(accounts[0]);
+        });
+
+        const RPSToken = new web3.eth.Contract(abi, contractAddress);
+
+        [balance, symbol] = await Promise.all([
+          RPSToken.methods.balanceOf(accounts[0]).call(),
+          RPSToken.methods.symbol().call(),
+        ]);
+
+        balance = web3.utils.fromWei(balance, 'ether');
+        console.log(balance);
+        console.log(symbol);
+
+        balance_span.textContent = `${balance} ${symbol}토큰`;
         init(accounts[0]);
       });
     } else {
