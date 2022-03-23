@@ -1,53 +1,58 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <main>
-            <header>
-                <h1> Monster Hunter Stories BattleSystem</h1>
-            </header>
-            <div id="battleField">
-                <div class="HPBar" id="playerHP">
-                    <div class="currentHP" id="currentPlayerHPBar">
-                        <span id="currentPlayerHPNum">50</span>/<span>100</span>
-                    </div>
-                </div>
-                <div class="attackPosition" id="playerInitAttackPosition">
-
-                </div>
-                <div class="HPBar" id="monsterHP">
-                    <div class="currentHP" id="currentMonsterHPBar">
-                        <span id="currentMonsterHPNum">50</span>/<span>100</span>
-                    </div>
-                </div>
-                <div class="attackPosition" id="monsterInitAttackPosition">
-
-                </div>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Monster Hunter Stories BattleSystem</h1>
+      </header>
+      <div id="login">
+        <button id="loginBtn">Login with Metamask</button>
+      </div>
+      <div id="mainPage" class="hide">
+        <div id="battleField">
+          <div id="playerInfo">
+            <span id="address"></span>
+          </div>
+          <div class="HPBar" id="playerHP">
+            <div class="currentHP" id="currentPlayerHPBar">
+              <span id="currentPlayerHPNum">50</span>/<span>100</span>
             </div>
-            <div id="attackTypes">
-                <div class="attack" id="power">
-                    <img class="attackImg" src="src/power.png">
-                </div>
-                <div class="attack" id="speed">
-                    <img class="attackImg" src="src/speed.png">
-                </div>
-                <div class="attack" id="technical">
-                    <img class="attackImg" src="src/technical.png">
-                </div>
+          </div>
+          <div class="attackPosition" id="playerInitAttackPosition"></div>
+          <div class="HPBar" id="monsterHP">
+            <div class="currentHP" id="currentMonsterHPBar">
+              <span id="currentMonsterHPNum">50</span>/<span>100</span>
             </div>
-            <div class="modal hide" id="modal">
-                <div id="modal_overlay"></div>
-                <div id="modal_content">
-                    <h2 id="resultText">You lose...</h2>
-                    <img src="#">
-                    <div id="retry">
-                        <span> Retry? </span>
-                    </div>
-                </div>
+          </div>
+          <div class="attackPosition" id="monsterInitAttackPosition"></div>
+        </div>
+        <div id="attackTypes">
+          <div class="attack" id="power">
+            <img class="attackImg" src="src/power.png" />
+          </div>
+          <div class="attack" id="speed">
+            <img class="attackImg" src="src/speed.png" />
+          </div>
+          <div class="attack" id="technical">
+            <img class="attackImg" src="src/technical.png" />
+          </div>
+        </div>
+        <div class="modal hide" id="modal">
+          <div id="modal_overlay"></div>
+          <div id="modal_content">
+            <h2 id="resultText">You lose...</h2>
+            <img src="#" />
+            <div id="retry">
+              <span> Retry? </span>
             </div>
-        </main>
-        <script src="app.js" type="module"></script>
-    </body>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="app.js" type="module"></script>
+  </body>
 </html>

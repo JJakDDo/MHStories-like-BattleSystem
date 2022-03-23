@@ -1,166 +1,176 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'DotGothic16', sans-serif;
-    user-select: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'DotGothic16', sans-serif;
+  user-select: none;
 }
 
-body{
-    background: #181818;
+body {
+  background: #181818;
 }
 
-main{
-    background: #EDEDED;
-    margin: 0 auto;
-    width: 600px;
-    height: 100vh;
-    position: relative;
+main {
+  background: #ededed;
+  margin: 0 auto;
+  width: 600px;
+  height: 100vh;
+  position: relative;
 }
 
-header{
-    padding-top: 20px;
+header {
+  padding-top: 20px;
 }
 
-header > h1{
-    text-align: center;
-    padding: 20px auto;
+header > h1 {
+  text-align: center;
+  padding: 20px auto;
 }
 
-#battleField{
-    background: white;
-    margin: 20px 10px;
-    border: 3px solid black;
-    border-radius: 10px;
-    height: 300px;
-    position: relative;
+#battleField {
+  background: white;
+  margin: 20px 10px;
+  border: 3px solid black;
+  border-radius: 10px;
+  height: 300px;
+  position: relative;
 }
 
-
-.HPBar{
-    background: white;
-    width: 106px;
-    border: 3px solid black;
-    border-radius: 10px;
-    position: absolute;
+.HPBar {
+  background: white;
+  width: 106px;
+  border: 3px solid black;
+  border-radius: 10px;
+  position: absolute;
 }
 
-.currentHP{
-    background: red;
-    border-radius: 5px;
+.currentHP {
+  background: red;
+  border-radius: 5px;
 }
 
-#playerHP{
-    top: 50px;
-    left: 20px;
+#playerHP {
+  top: 50px;
+  left: 20px;
 }
 
-#monsterHP{
-    top: 50px;
-    right: 20px;
+#monsterHP {
+  top: 50px;
+  right: 20px;
 }
 
-#attackTypes{
-    display: flex;
-    margin: 50px 10px;
-    padding: 0 30px;
-    justify-content: space-between;
+#attackTypes {
+  display: flex;
+  margin: 50px 10px;
+  padding: 0 30px;
+  justify-content: space-between;
 }
 
-.attack{
-    position: relative;
-    width: 150px;
-    height: 150px;
-    background: rgba(0, 0, 0, 0);
-    border-radius: 50%;
+.attack {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: rgba(0, 0, 0, 0);
+  border-radius: 50%;
 }
 
-.attack:hover{
-    cursor: pointer;
+.attack:hover {
+  cursor: pointer;
 }
 
-.attackPosition{
-    position: absolute;
-    width: 10px;
-    height: 10px;
+.attackPosition {
+  position: absolute;
+  width: 10px;
+  height: 10px;
 }
 
-#playerInitAttackPosition{
-    top: 150px;
-    left: 150px;
+#playerInitAttackPosition {
+  top: 150px;
+  left: 150px;
 }
-#monsterInitAttackPosition{
-    top: 150px;
-    right: 200px;
-}
-
-.attackImg{
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    z-index: 0;
-    transition: transform 1s ease;
+#monsterInitAttackPosition {
+  top: 150px;
+  right: 200px;
 }
 
-.attackImg:hover{
-    transform: scale(1.1, 1.1);
+.attackImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: 0;
+  transition: transform 1s ease;
 }
 
-
-.modal{
-    margin: 0 auto;
-    width: 600px;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.attackImg:hover {
+  transform: scale(1.1, 1.1);
 }
 
-#modal_overlay{
-    background: rgba(0,0,0,0.6);
-    width: 100%;
-    height: 100%;
-    position: absolute;
+.modal {
+  margin: 0 auto;
+  width: 600px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hide {
+  display: none;
 }
 
-#modal_content{
-    background: white;
-    width: 300px;
-    height: 200px;
-    position: relative;
-    border-radius: 10px;
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#modal_overlay {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
-#modal_content > h2{
-    margin: 20px;
-}
-#modal_content > img{
-    width: 50px;
-    height: 50px;
+#modal_content {
+  background: white;
+  width: 300px;
+  height: 200px;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#modal_content > #retry{
-    margin: 20px;
-    background: black;
-    color: white;
-    width: 80px;
-    text-align: center;
-    border-radius: 10px;
-    cursor: pointer;
+#modal_content > h2 {
+  margin: 20px;
 }
-.hide{
-    display: none;
+#modal_content > img {
+  width: 50px;
+  height: 50px;
 }
-.disable{
-    pointer-events: none;
+
+#modal_content > #retry {
+  margin: 20px;
+  background: black;
+  color: white;
+  width: 80px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.disable {
+  pointer-events: none;
+}
+
+#login {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#playerInfo {
+  position: absolute;
 }
